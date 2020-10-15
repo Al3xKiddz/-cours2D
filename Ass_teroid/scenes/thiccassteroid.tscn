@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Asteroid Large Minerals.png" type="Texture" id=1]
+[ext_resource path="res://scripts/thiccassteroid.gd" type="Script" id=2]
+[ext_resource path="res://scenes/mediumassteroid.tscn" type="PackedScene" id=3]
+
+
+
+
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource( 2 )
+mediumSaignant = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 23.3733, 40.9194, 25.1551, 20.8742, 44.3094, -6.74368, 47.4276, -23.6708, 38.5186, -42.3796, 4.66444, -51.7341, -24.7352, -44.6069, -46.5622, -29.4616, -29.6351, 2.16531, -32.3078, 39.5831, -0.680939, 50.2738 )

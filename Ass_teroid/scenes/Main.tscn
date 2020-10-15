@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/vaisseau.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=3]
+[ext_resource path="res://scenes/thiccassteroid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/mediumassteroid.tscn" type="PackedScene" id=5]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+thicc = ExtResource( 4 )
+mediumSaignant = ExtResource( 5 )
+
+[node name="vaisseau" parent="." instance=ExtResource( 1 )]
+position = Vector2( 490, 300 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="pts" type="RichTextLabel" parent="."]
+margin_left = 623.296
+margin_top = 13.4848
+margin_right = 663.296
+margin_bottom = 53.4848
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vies" type="RichTextLabel" parent="."]
+margin_left = 261.736
+margin_top = 14.5152
+margin_right = 297.736
+margin_bottom = 54.5152
+__meta__ = {
+"_edit_use_anchors_": false
+}

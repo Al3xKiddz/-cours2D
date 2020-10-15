@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Asteroid Small.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends KinematicBody2D
+
+var speed = 200
+var velocity = Vector2()
+onready var screen_size = get_viewport_rect().size
+func _ready():
+	randomize()
+	var angle = rand_range(0,359)
+	velocity = Vector2(speed, 0).rotated(deg2rad(angle))
+
+func _process(delta):
+	position.x = wrapf(position.x, 0, screen_size.x)
+	position.y = wrapf(position.y, 0, screen_size.y)
+	move_and_collide(velocity * delta)
+
+func hit(collision):
+	if collision :
+		get_node(\"../vaisseau\").pts += 5
+		queue_free()
+		print(\"bye ti mini\")
+"
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.881779, 0.395831 )
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -12.0042, 1.9212, -5.82372, 12.4094, 2.22968, 14.0949, 9.90851, 9.60003, 10.0958, -2.38643, 5.03901, -11.5636, -9.19491, -5.57033 )
