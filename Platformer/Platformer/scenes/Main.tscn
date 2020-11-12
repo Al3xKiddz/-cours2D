@@ -1,0 +1,163 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/platform.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=3]
+[ext_resource path="res://scenes/joueur.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "deplace3"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -375.656, 646.24 ), Vector2( 1365.59, 649.176 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "deplce2"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 9.15747 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 34.551, 144.339 ), Vector2( 378.101, 437.972 ), Vector2( 34.551, 144.339 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "deplace4"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 541.1, -199.535 ), Vector2( 544.726, 388.764 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "deplace"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 559.822, 501.804 ), Vector2( 1658.01, 516.486 ) ]
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 746.543, 66.6361, 0, 0, 0, 0, 746.543, 66.6361, -131.139, 6.02936, 131.139, -6.02936, 890.315, -162.951, 0, -60.2936, 0, 60.2936, 1217.87, 83.1816, 69.3377, -9.04404, -69.3377, 9.04404, 988.397, 173.862, 0, 0, 0, 0, 746.543, 66.6361 )
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1712.3, 180.398 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 59.5299, 4.7103 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Node2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -162.242, 375.301 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 62.5282, 360.365 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 847.078, 648.302 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D3"]
+autoplay = "deplace3"
+anims/deplace3 = SubResource( 1 )
+
+[node name="Node2D4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 277.657, 352.123 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D4"]
+autoplay = "deplce2"
+anims/deplce2 = SubResource( 2 )
+
+[node name="Node2D5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 543.34, 163.875 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D5"]
+autoplay = "deplace4"
+anims/deplace4 = SubResource( 3 )
+
+[node name="Node2D6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 890.178, 506.221 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D6"]
+autoplay = "deplace"
+anims/deplace = SubResource( 4 )
+
+[node name="Node2D7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 677.96, 230.164 )
+script = ExtResource( 2 )
+patrol_path = NodePath("Path2D")
+
+[node name="Path2D" type="Path2D" parent="Node2D7"]
+position = Vector2( -718.97, -130.098 )
+curve = SubResource( 5 )
+
+[node name="Node2D8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 917.26, 345.723 )
+
+[node name="Node2D9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1154.87, 406.979 )
+
+[node name="Node2D10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1403.6, 355.284 )
+
+[node name="Node2D11" parent="." instance=ExtResource( 4 )]
+position = Vector2( -162, 300 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 416.257, 832.263 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color( 0.47451, 0.0980392, 0.0980392, 1 )
+self_modulate = Color( 0.431373, 0.145098, 0.145098, 1 )
+show_behind_parent = true
+position = Vector2( 185.64, 40.8091 )
+shape = SubResource( 6 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 1402.3, 329.32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( 0.789124, -0.0153503 )
+shape = SubResource( 7 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
